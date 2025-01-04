@@ -11,6 +11,7 @@ import scalikejdbc.config.DBs
 
 import scala.concurrent.{ExecutionContext, Future}
 
+
 class AppComponents(context: Context) extends BuiltInComponentsFromContext(context = context)
   with MainController_DI
   with AssetsComponents
