@@ -13,13 +13,16 @@ import scala.concurrent.{ExecutionContext, Future}
 
 
 class AppComponents(context: Context) extends BuiltInComponentsFromContext(context = context)
-  with MainController_DI
   with AssetsComponents
   with I18nComponents
   with play.filters.HttpFiltersComponents
   with EvolutionsComponents
   with DBComponents
-  with HikariCPComponents {
+  with HikariCPComponents
+
+  with RestaurantsController_DI
+  with RestaurantsService_DI
+  with RestaurantsDAO_DI {
 
 
   lazy val router: Router = {
