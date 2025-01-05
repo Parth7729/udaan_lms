@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS points_of_contact(
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at TIMESTAMPTZ,
     role TEXT NOT NULL,
-    restaurant_id BIGINT NOT NULL REFERENCES restaurants(id),
+    restaurant_id BIGINT NOT NULL REFERENCES restaurants(id) ON DELETE SET NULL,
     last_contacted_at TIMESTAMPTZ
 );
 
@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS interactions(
     id BIGSERIAL PRIMARY KEY,
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     interaction_type TEXT NOT NULL,
-    poc_id BIGINT NOT NULL REFERENCES points_of_contact(id),
-    restaurant_id BIGINT NOT NULL REFERENCES restaurants(id),
+    poc_id BIGINT NOT NULL REFERENCES points_of_contact(id) ON DELETE SET NULL,
+    restaurant_id BIGINT NOT NULL REFERENCES restaurants(id) ON DELETE SET NULL,
     call_recording_url VARCHAR(255)
 
 );
